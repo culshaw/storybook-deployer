@@ -54,7 +54,7 @@ publishUtils.exec('git commit -m ' + JSON.stringify(config.commitMessage));
 // /dev/null to hide any sensitive credential data that might otherwise be exposed.
 console.log('=> Deploying storybook');
 
-publishUtils.exec('git push --force --quiet ' + GIT_URL + ' master:gh-pages')
+publishUtils.exec('git push --force ' + GIT_URL + ' master:gh-pages')
 shell.cd('..');
 shell.rm('-rf', OUTPUT_DIR);
 
