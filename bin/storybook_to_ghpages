@@ -20,7 +20,7 @@ console.log('=> Getting the git remote URL');
 var GIT_URL = process.env.STORYBOOK_GIT_URL;
 if (!GIT_URL) {
   console.log('This project is not configured with a remote git repo');
-  process.exit(-1);
+  process.exit(0);
 }
 
 // clear and re-create the out directory
