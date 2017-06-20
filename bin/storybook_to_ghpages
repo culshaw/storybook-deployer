@@ -17,7 +17,7 @@ var config = Object.assign({}, defaultConfig, packageJson['storybook-deployer'] 
 
 // get GIT url
 console.log('=> Getting the git remote URL');
-var GIT_URL = publishUtils.exec('git config --get remote.origin.url');
+var GIT_URL = process.env.STORYBOOK_GIT_URL;
 if (!GIT_URL) {
   console.log('This project is not configured with a remote git repo');
   process.exit(-1);
@@ -53,10 +53,6 @@ publishUtils.exec('git commit -m ' + JSON.stringify(config.commitMessage));
 // will be lost, since we are overwriting it.) We redirect any output to
 // /dev/null to hide any sensitive credential data that might otherwise be exposed.
 console.log('=> Deploying storybook');
-
-if(process.env.STORYBOOK_GIT_TOKEN && process.env.STORYBOOK_GIT_USER) {
-  GIT_URL = GIT_URL.replace('//', '//'+process.env.STORYBOOK_GIT_USER+':'+process.env.STORYBOOK_GIT_TOKEN+"@");
-}
 
 publishUtils.exec('git push --force --quiet ' + GIT_URL + ' master:gh-pages')
 shell.cd('..');
