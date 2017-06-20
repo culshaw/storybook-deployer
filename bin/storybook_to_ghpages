@@ -53,6 +53,11 @@ publishUtils.exec('git commit -m ' + JSON.stringify(config.commitMessage));
 // will be lost, since we are overwriting it.) We redirect any output to
 // /dev/null to hide any sensitive credential data that might otherwise be exposed.
 console.log('=> Deploying storybook');
+
+if(process.env.STORYBOOK_GIT_TOKEN && process.env.STORYBOOK_GIT_USER) {
+  GIT_URL = GIT_URL.replace('//', '//'+process.env.STORYBOOK_GIT_USER+':'+process.env.STORYBOOK_GIT_TOKEN+"@");
+}
+
 publishUtils.exec('git push --force --quiet ' + GIT_URL + ' master:gh-pages')
 shell.cd('..');
 shell.rm('-rf', OUTPUT_DIR);
