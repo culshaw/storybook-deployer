@@ -1,7 +1,8 @@
-# Storybook Deployer
+# YunoJuno Storybook Deployer
 
-This is a simple tool allows you to deploy your Storybook into a static hosting service.
-(Currently, GitHub Pages only.)
+This is a simple tool allows you to deploy your Storybook into Github Pages.
+It relies on a fully qualified github url (username + token) set in an environment variable with the repositry to deploy to.
+This is useful for services like Heroku if you are building the storybook as part of the buildpack.
 
 ## Getting Started
 
