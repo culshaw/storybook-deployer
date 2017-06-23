@@ -1,6 +1,6 @@
 {
-  "name": "@kadira/storybook-deployer",
-  "version": "1.2.0",
+  "name": "yunojuno-storybook-deployer",
+  "version": "1.2.2",
   "description": "Deploy your storybook as a webapp.",
   "bin": {
     "storybook-to-ghpages": "./bin/storybook_to_ghpages"
