@@ -9,7 +9,7 @@ This is useful for services like Heroku if you are building the storybook as par
 Install Storybook Deployer with:
 
 ```
-npm i --save @kadira/storybook-deployer
+npm i @storybook/storybook-deployer --save-dev
 ```
 Then add a NPM script like this:
 
@@ -41,6 +41,14 @@ If you customize the build configuration with some additional params (like stati
 
 > Make sure to set the output directory as **`.out`**.
 
+### Skip Build Step
+
+If you have previously built your storybook output (through a different CI step, etc) and just need to publish it, specify the directory with like this:
+
+```js
+ npm run deploy-storybook -- --existing-output-dir=.out
+```
+
 ### Custom deploy configuration
 
 If you want to customize Git username, email or commit message, add this to `package.json`:
@@ -63,3 +71,19 @@ It will override the default configuration:
 }
 ```
 
+To deploy Storybook to a remote other than `origin`, pass a `--remote` flag to `npm run deploy-storybook`.  
+For example, to deploy to your `upstream` remote:
+
+```
+npm run deploy-storybook -- --remote=upstream
+```
+ 
+ Or, to specify a target branch and serve your storybook with rawgit instead of gh-pages:
+ ```
+ npm run deploy-storybook -- --branch=feature-branch
+ ```
+
+Or, to specify a source branch other than `master`, pass a `--source-branch` flag to `npm run deploy-storybook`:
+```
+npm run deploy-storybook -- --source-branch=release
+```
