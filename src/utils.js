@@ -3,7 +3,7 @@ var parseGitUrl = require('git-url-parse');
 
 module.exports.exec = function exec(command) {
   console.log("   executing: " + command);
-  const options = { silent: true };
+  const options = { silent: false };
   const ref = shell.exec(command, options);
   if (ref.code === 0) {
    return ref.stdout.trim();
